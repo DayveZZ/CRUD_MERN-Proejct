@@ -1,15 +1,8 @@
 import express from "express";
-import Workout from "../models/Workout.Model.js";
+import { getAllWorkouts } from "../controllers/workout.controller.js";
+
 const router = express.Router();
 
-// Create a new workout
-router.get("/", async (req, res) => {
-  try {
-    const workoutData = await Workout.find().sort({ createdAt: -1 });
-    res.status(200).json(workoutData);
-  } catch (err) {
-    res.status(400).json({ error: err.message });
-  }
-});
+router.get("/", getAllWorkouts);
 
 export default router;

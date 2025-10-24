@@ -14,8 +14,8 @@ app.get("/", (req, res) => {
 });
 
 //Routes
-// const Workoutpath = "/api/workouts";
-app.use("/api/workouts", workoutRoutes);
+const Workoutpath = "/api/workouts";
+app.use(Workoutpath, workoutRoutes);
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
