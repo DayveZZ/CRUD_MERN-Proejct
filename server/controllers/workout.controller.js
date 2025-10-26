@@ -10,4 +10,14 @@ const getAllWorkouts = async (req, res) => {
   }
 };
 
-export { getAllWorkouts };
+// Get Single Workout Data
+const getWorkout = async (req, res) => {
+  try {
+    const id = req.params.id;
+    const workoutData = await Workout.findById({ _id: id });
+    res.status(200).json(workoutData);
+  } catch (err) {
+    res.status(400).json({ error: err.message });
+  }
+};
+export { getAllWorkouts, getWorkout };
