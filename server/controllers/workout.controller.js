@@ -49,4 +49,21 @@ const updateWorkout = async (req, res) => {
   }
 };
 
-export { getAllWorkouts, createWorkout, getWorkout, updateWorkout };
+// Delete Single Workout Data
+const deleteWorkout = async (req, res) => {
+  try {
+    const id = req.params.id;
+    const workoutData = await WorkoutModel.findByIdAndDelete({ _id: id });
+    res.status(200).json(workoutData);
+  } catch (err) {
+    res.status(400).json({ error: err.message });
+  }
+};
+
+export {
+  getAllWorkouts,
+  createWorkout,
+  getWorkout,
+  updateWorkout,
+  deleteWorkout,
+};
