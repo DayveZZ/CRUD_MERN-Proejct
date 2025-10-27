@@ -1,4 +1,5 @@
 import express from "express";
+import cors from "cors";
 import "./database/connection.js";
 import workoutRoutes from "./routes/workout.Router.js";
 
@@ -8,6 +9,7 @@ const PORT = process.env.PORT || 3000;
 // Middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+app.use(cors());
 
 // connect to MongoDB after env is loaded
 app.get("/", (req, res) => {
