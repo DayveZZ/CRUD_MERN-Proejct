@@ -3,3 +3,6 @@
 .workoutForm input {
   @apply outline-none border-b w-full mr-4;
 }
+.btn {
+  @apply cursor-pointer uppercase bg-black/80 px-4 py-2 rounded-lg;
+}

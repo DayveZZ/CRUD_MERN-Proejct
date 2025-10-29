@@ -32,6 +32,7 @@ const App = () => {
     try {
       await axios.post(`http://localhost:${PORT}/api/workouts`, formData);
       getWorkouts(); // refresh the list
+      // setWorkouts([...workouts, formData]); // optimistically update UI
       setFormData({ title: "", reps: "", load: "" }); // clear form
     } catch (error) {
       console.error("Error creating workout:", error.message);
@@ -44,6 +45,12 @@ const App = () => {
       ...formData,
       [name]: value,
     });
+  };
+
+  // Handle workout deletion
+  const deleteWorkout = async (_id) => {
+    await axios.delete(`http://localhost:${PORT}/api/workouts/${_id}`);
+    getWorkouts();
   };
 
   return (
@@ -78,9 +85,7 @@ const App = () => {
             value={formData.load}
             onChange={updateFormField}
           />
-          <button className="cursor-pointer uppercase bg-black/80 p-2 rounded">
-            Submit
-          </button>
+          <button className="btn">Submit</button>
         </form>
       </div>
 
@@ -94,6 +99,12 @@ const App = () => {
               <h1>Exercise: {i.title}</h1>
               <h1>Reps: {i.reps} x 3</h1>
               <h1>Load: {i.load} KG</h1>
+              <div className="flex justify-between">
+                <button className="btn">Edit</button>
+                <button className="btn" onClick={() => deleteWorkout(i._id)}>
+                  Delete
+                </button>
+              </div>
             </div>
           ))}
       </div>
