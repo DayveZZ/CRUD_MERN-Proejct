@@ -1,1 +1,5 @@
 @import "tailwindcss";
+
+.workoutForm input {
+  @apply outline-none border-b w-full mr-4;
+}
