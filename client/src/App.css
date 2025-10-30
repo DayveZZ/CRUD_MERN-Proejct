@@ -1,8 +1,17 @@
 @import "tailwindcss";
 
+.workoutForm {
+  @apply flex justify-between m-4;
+}
 .workoutForm input {
-  @apply outline-none border-b w-full mr-4;
+  @apply outline-none border-b w-full mr-4 py-2;
+}
+.workoutForm .btn {
+  @apply mt-4;
 }
 .btn {
   @apply cursor-pointer uppercase bg-black/80 px-4 py-2 rounded-lg;
+}
+.editForm {
+  /* @apply absolute w-full bg-black p-4 flex items-start; */
 }
