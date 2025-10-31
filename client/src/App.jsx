@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
 import "./App.css";
 import axios from "axios";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import Home from "./pages/Home.jsx";
+import Navbar from "./components/Navbar.jsx";
 
 const App = () => {
   const [workouts, setWorkouts] = useState(null);
@@ -96,102 +99,116 @@ const App = () => {
     }
   };
   return (
-    <div className="h-dvh flex flex-col items-center gap-4">
-      <h1 className="p-4 uppercase text-2xl">Create your workout plan</h1>
-      <div className="w-full">
-        {!isEditing && (
-          <form onSubmit={createWorkout} className="workoutForm">
-            <input
-              type="text"
-              name="title"
-              placeholder="Title"
-              required
-              value={formData.title}
-              onChange={updateFormField}
-            />
-            <input
-              type="number"
-              name="reps"
-              placeholder="Reps"
-              required
-              value={formData.reps}
-              onChange={updateFormField}
-            />
-            <input
-              type="number"
-              name="load"
-              placeholder="Load in KG"
-              required
-              value={formData.load}
-              onChange={updateFormField}
-            />
-            <button className="btn">Submit</button>
-          </form>
-        )}
+    <>
+      {/* APP */}
+      <Router>
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+        </Routes>
+      </Router>
 
-        {isEditing && (
-          <form onSubmit={updateWorkout} className="workoutForm editForm">
-            <input
-              type="text"
-              name="title"
-              placeholder="Title"
-              required
-              value={updateData.title}
-              onChange={editWorkout}
-            />
-            <input
-              type="number"
-              name="reps"
-              placeholder="Reps"
-              required
-              value={updateData.reps}
-              onChange={editWorkout}
-            />
-            <input
-              type="number"
-              name="load"
-              placeholder="Load in KG"
-              required
-              value={updateData.load}
-              onChange={editWorkout}
-            />
-            <button type="submit" className="btn">
-              Update
-            </button>
-            <button
-              className="btn ml-4"
-              onClick={() => {
-                setIsEditing(false);
-              }}
-            >
-              Cancel
-            </button>
-          </form>
-        )}
-      </div>
+      {/* WORKOUT */}
+      <div className="h-dvh flex flex-col items-center gap-4">
+        <h1 className="p-4 uppercase text-2xl">Create your workout plan</h1>
+        <div className="w-full">
+          {!isEditing && (
+            <form onSubmit={createWorkout} className="workoutForm">
+              <input
+                type="text"
+                name="title"
+                placeholder="Title"
+                required
+                value={formData.title}
+                onChange={updateFormField}
+              />
+              <input
+                type="number"
+                name="reps"
+                placeholder="Reps"
+                required
+                value={formData.reps}
+                onChange={updateFormField}
+              />
+              <input
+                type="number"
+                name="load"
+                placeholder="Load in KG"
+                required
+                value={formData.load}
+                onChange={updateFormField}
+              />
+              <button className="btn">Submit</button>
+            </form>
+          )}
 
-      <div className="w-full h-full p-4 grid grid-cols-4 gap-4">
-        {workouts &&
-          workouts.map((i) => (
-            <div
-              key={i._id}
-              className="border-white/40 rounded-lg h-fit p-4 flex flex-col gap-2 bg-black/40"
-            >
-              <h1>Exercise: {i.title}</h1>
-              <h1>Reps: {i.reps} x 3 Reps</h1>
-              <h1>Load: {i.load} KG</h1>
-              <div className="flex justify-between">
-                <button className="btn" onClick={() => toggleUpdateWorkout(i)}>
-                  Edit
-                </button>
-                <button className="btn" onClick={() => deleteWorkout(i._id)}>
-                  Delete
-                </button>
+          {isEditing && (
+            <form onSubmit={updateWorkout} className="workoutForm editForm">
+              <input
+                type="text"
+                name="title"
+                placeholder="Title"
+                required
+                value={updateData.title}
+                onChange={editWorkout}
+              />
+              <input
+                type="number"
+                name="reps"
+                placeholder="Reps"
+                required
+                value={updateData.reps}
+                onChange={editWorkout}
+              />
+              <input
+                type="number"
+                name="load"
+                placeholder="Load in KG"
+                required
+                value={updateData.load}
+                onChange={editWorkout}
+              />
+              <button type="submit" className="btn">
+                Update
+              </button>
+              <button
+                className="btn ml-4"
+                onClick={() => {
+                  setIsEditing(false);
+                }}
+              >
+                Cancel
+              </button>
+            </form>
+          )}
+        </div>
+
+        <div className="w-full h-full p-4 grid grid-cols-4 gap-4">
+          {workouts &&
+            workouts.map((i) => (
+              <div
+                key={i._id}
+                className="border-white/40 rounded-lg h-fit p-4 flex flex-col gap-2 bg-black/40"
+              >
+                <h1>Exercise: {i.title}</h1>
+                <h1>Reps: {i.reps} x 3 Reps</h1>
+                <h1>Load: {i.load} KG</h1>
+                <div className="flex justify-between">
+                  <button
+                    className="btn"
+                    onClick={() => toggleUpdateWorkout(i)}
+                  >
+                    Edit
+                  </button>
+                  <button className="btn" onClick={() => deleteWorkout(i._id)}>
+                    Delete
+                  </button>
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 
