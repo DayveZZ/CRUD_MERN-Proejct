@@ -2,26 +2,27 @@ import React, { useEffect, useState } from "react";
 import "./App.css";
 import axios from "axios";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import Home from "./pages/Home.jsx";
-import Navbar from "./components/Navbar.jsx";
+import Home from "./pages/Home/Home.jsx";
+import Navbar from "./components/Navbar/Navbar.jsx";
+import Footer from "./components/Footer/Footer.jsx";
 
 const App = () => {
   const [workouts, setWorkouts] = useState(null);
   const PORT = import.meta.env.VITE_PORT;
 
-  // Fetch workouts from the backend
-  const getWorkouts = async () => {
-    try {
-      const response = await axios.get(`http://localhost:${PORT}/api/workouts`);
-      setWorkouts(response.data);
-    } catch (error) {
-      console.error("Error fetching workouts:", error.message);
-    }
-  };
+  // // Fetch workouts from the backend
+  // const getWorkouts = async () => {
+  //   try {
+  //     const response = await axios.get(`http://localhost:${PORT}/api/workouts`);
+  //     setWorkouts(response.data);
+  //   } catch (error) {
+  //     console.error("Error fetching workouts:", error.message);
+  //   }
+  // };
 
-  useEffect(() => {
-    getWorkouts();
-  }, []);
+  // useEffect(() => {
+  //   getWorkouts();
+  // }, []);
 
   // Handle form submission to create a new workout
   const [formData, setFormData] = useState({
@@ -55,7 +56,7 @@ const App = () => {
     getWorkouts();
   };
 
-  // Handle workout editing
+  // // Handle workout editing
   const [isEditing, setIsEditing] = useState(false);
   const [updateData, setUpdateData] = useState({
     _id: null,
@@ -103,9 +104,11 @@ const App = () => {
       {/* APP */}
       <Router>
         <Navbar />
+
         <Routes>
           <Route path="/" element={<Home />} />
         </Routes>
+        <Footer />
       </Router>
 
       {/* WORKOUT */}
