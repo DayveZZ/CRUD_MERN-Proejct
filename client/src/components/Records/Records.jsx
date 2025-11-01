@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useContext } from "react";
 import axios from "axios";
+import { Data } from "../../context/WorkoutContext.jsx";
 
 const Records = () => {
-  const PORT = import.meta.env.VITE_PORT;
-  const [workouts, setWorkouts] = useState(null);
+  const PORT = import.meta.env.VITE_PORT || 5000;
+  const { workouts, setWorkouts } = useContext(Data);
 
   // Fetch workouts from the backend
   const getWorkouts = async () => {
