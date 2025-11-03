@@ -5,8 +5,8 @@ import Form from "../../components/Form/Form";
 const Home = () => {
   return (
     <div>
-      <Records />
       <Form />
+      <Records />
     </div>
   );
 };

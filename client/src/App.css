@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 .workoutForm {
-  @apply flex justify-between m-4;
+  @apply flex justify-between;
 }
 .workoutForm input {
   @apply outline-none border-b w-full mr-4 py-2;
