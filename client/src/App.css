@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 .workoutForm {
-  @apply flex flex-col gap-4 items-center p-4;
+  @apply flex flex-col gap-4 items-center p-4 w-72;
 }
 .workoutForm input {
   @apply outline-none border-b w-full mr-4 py-2;
@@ -10,26 +10,10 @@
   @apply mt-4;
 }
 .btn {
-  @apply cursor-pointer uppercase bg-black/30 hover:bg-black/40 text-black/90 p-4 rounded-lg w-12 h-12 flex items-center justify-center text-xl;
-}
-.editForm {
-  /* @apply absolute w-full bg-black p-4 flex items-start; */
+  @apply cursor-pointer uppercase hover:bg-black/40 p-4 rounded-lg w-12 h-12 flex items-center justify-center text-xl;
 }
 body {
-  background: rgb(223, 228, 231);
-  /* background-image: url("./assets/bg.jpg"); */
-  /* background: #98b6fa;
-  background: linear-gradient(
-    90deg,
-    rgba(152, 182, 250, 1) 1%,
-    rgb(224, 161, 79) 25%,
-    rgba(79, 224, 195, 1) 50%,
-    rgba(240, 190, 134, 1) 75%,
-    rgba(255, 230, 247, 1) 100%
-  );
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover; */
+  @apply text-black/80 bg-gradient-to-br from-gray-100 via-gray-200 to-gray-300 text-gray-800;
 }
 body::-webkit-scrollbar {
   display: none;

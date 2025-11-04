@@ -15,7 +15,7 @@ const Records = () => {
       <h1 className="uppercase text-2xl font-semibold border-b py-4 mb-4 w-fit mx-auto">
         Your Workout Plans
       </h1>
-      <div className="max-h-[70vh] overflow-y-auto gap-4 pr-4">
+      <div className="max-h-[70vh] overflow-y-auto gap-4 pr-4 rounded-lg">
         {workouts &&
           workouts.map((i) => (
             <div
@@ -35,10 +35,16 @@ const Records = () => {
               </div>
 
               <div className="flex flex-col gap-2 justify-between">
-                <button className="btn" onClick={() => toggleUpdateWorkout(i)}>
+                <button
+                  className="btn  bg-gradient-to-r from-blue-400 to-indigo-500 hover:from-blue-500 hover:to-indigo-600 transition-colors duration-200"
+                  onClick={() => toggleUpdateWorkout(i)}
+                >
                   <MdEdit />
                 </button>
-                <button className="btn" onClick={() => deleteWorkout(i._id)}>
+                <button
+                  className="btn bg-gradient-to-r from-rose-400 to-red-500 hover:from-rose-500 hover:to-red-600 transition-colors duration-200"
+                  onClick={() => deleteWorkout(i._id)}
+                >
                   <MdDelete />
                 </button>
               </div>

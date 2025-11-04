@@ -55,7 +55,7 @@ const Form = () => {
                 value={formData.load}
                 onChange={updateFormField}
               />
-              <button className="btn">
+              <button className="btn bg-gradient-to-r from-green-400 to-emerald-500 hover:from-green-500 hover:to-emerald-600 transition-colors duration-200">
                 <IoMdAdd />
               </button>
             </form>
@@ -65,7 +65,7 @@ const Form = () => {
         {isEditing && (
           <div className="p-4">
             <h1 className="uppercase text-2xl">Edit your workout plan</h1>
-            <form onSubmit={updateWorkout} className="workoutForm editForm">
+            <form onSubmit={updateWorkout} className="workoutForm">
               <input
                 type="text"
                 name="title"
@@ -90,17 +90,22 @@ const Form = () => {
                 value={updateData.load}
                 onChange={editWorkout}
               />
-              <button type="submit" className="btn">
-                <RxUpdate />
-              </button>
-              <button
-                className="btn ml-4"
-                onClick={() => {
-                  setIsEditing(false);
-                }}
-              >
-                <MdCancel />
-              </button>
+              <div className="flex gap-4 items-center">
+                <button
+                  type="submit"
+                  className="btn  bg-gradient-to-r from-amber-400 to-yellow-500 hover:from-amber-500 hover:to-yellow-600 transition-colors duration-200"
+                >
+                  <RxUpdate />
+                </button>
+                <button
+                  className="btn bg-gradient-to-r from-gray-400 to-gray-500 hover:from-gray-500 hover:to-gray-600 transition-colors duration-200"
+                  onClick={() => {
+                    setIsEditing(false);
+                  }}
+                >
+                  <MdCancel />
+                </button>
+              </div>
             </form>
           </div>
         )}
