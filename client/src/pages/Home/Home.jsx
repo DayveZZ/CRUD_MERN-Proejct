@@ -4,9 +4,9 @@ import Form from "../../components/Form/Form";
 
 const Home = () => {
   return (
-    <div className="home">
-      <Form />
+    <div className="flex container mx-auto gap-4">
       <Records />
+      <Form />
     </div>
   );
 };

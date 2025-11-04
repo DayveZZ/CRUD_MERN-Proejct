@@ -11,16 +11,16 @@ const Records = () => {
   }, []);
 
   return (
-    <>
+    <div className="w-full">
       <h1 className="uppercase text-2xl font-semibold border-b py-4 mb-4 w-fit mx-auto">
         Your Workout Plans
       </h1>
-      <div className="p-4 gap-4 ">
+      <div className="max-h-[70vh] overflow-y-auto gap-4 pr-4">
         {workouts &&
           workouts.map((i) => (
             <div
               key={i._id}
-              className="border rounded-lg p-4 mb-4 flex justify-between bg-white/20"
+              className="shadow-lg rounded-lg p-4 mb-4 flex justify-between bg-white"
             >
               <div className="flex flex-col justify-between">
                 <h1>
@@ -45,7 +45,7 @@ const Records = () => {
             </div>
           ))}
       </div>
-    </>
+    </div>
   );
 };
 

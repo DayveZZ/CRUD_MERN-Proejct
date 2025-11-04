@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 .workoutForm {
-  @apply flex justify-between;
+  @apply flex flex-col gap-4 items-center p-4;
 }
 .workoutForm input {
   @apply outline-none border-b w-full mr-4 py-2;
@@ -16,19 +16,20 @@
   /* @apply absolute w-full bg-black p-4 flex items-start; */
 }
 body {
+  background: rgb(223, 228, 231);
   /* background-image: url("./assets/bg.jpg"); */
-  background: #98b6fa;
+  /* background: #98b6fa;
   background: linear-gradient(
     90deg,
     rgba(152, 182, 250, 1) 1%,
+    rgb(224, 161, 79) 25%,
     rgba(79, 224, 195, 1) 50%,
-    rgba(240, 190, 134, 1) 78%,
+    rgba(240, 190, 134, 1) 75%,
     rgba(255, 230, 247, 1) 100%
   );
   background-position: center;
   background-repeat: no-repeat;
-  background-size: cover;
-  /* overflow: hidden; */
+  background-size: cover; */
 }
 body::-webkit-scrollbar {
   display: none;

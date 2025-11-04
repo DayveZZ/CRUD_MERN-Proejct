@@ -25,7 +25,7 @@ const Form = () => {
     });
   };
   return (
-    <div className="border rounded m-4">
+    <div className="rounded-lg bg-white shadow-lg h-fit mt-20">
       <div className="w-full">
         {!isEditing && (
           <div className="p-4">
