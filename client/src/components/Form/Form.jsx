@@ -1,6 +1,9 @@
 import React, { useContext } from "react";
-const PORT = import.meta.env.VITE_PORT || 3000;
 import { Data } from "../../context/WorkoutContext.jsx";
+
+import { IoMdAdd } from "react-icons/io";
+import { RxUpdate } from "react-icons/rx";
+import { MdCancel } from "react-icons/md";
 
 const Form = () => {
   const {
@@ -52,7 +55,9 @@ const Form = () => {
                 value={formData.load}
                 onChange={updateFormField}
               />
-              <button className="btn">Submit</button>
+              <button className="btn">
+                <IoMdAdd />
+              </button>
             </form>
           </div>
         )}
@@ -86,7 +91,7 @@ const Form = () => {
                 onChange={editWorkout}
               />
               <button type="submit" className="btn">
-                Update
+                <RxUpdate />
               </button>
               <button
                 className="btn ml-4"
@@ -94,7 +99,7 @@ const Form = () => {
                   setIsEditing(false);
                 }}
               >
-                Cancel
+                <MdCancel />
               </button>
             </form>
           </div>

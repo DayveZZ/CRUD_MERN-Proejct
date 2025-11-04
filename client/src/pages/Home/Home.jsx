@@ -4,7 +4,7 @@ import Form from "../../components/Form/Form";
 
 const Home = () => {
   return (
-    <div>
+    <div className="home">
       <Form />
       <Records />
     </div>

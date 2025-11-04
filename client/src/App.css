@@ -10,8 +10,26 @@
   @apply mt-4;
 }
 .btn {
-  @apply cursor-pointer uppercase bg-black/80 px-4 py-2 rounded-lg;
+  @apply cursor-pointer uppercase bg-black/30 hover:bg-black/40 text-black/90 p-4 rounded-lg w-12 h-12 flex items-center justify-center text-xl;
 }
 .editForm {
   /* @apply absolute w-full bg-black p-4 flex items-start; */
+}
+body {
+  /* background-image: url("./assets/bg.jpg"); */
+  background: #98b6fa;
+  background: linear-gradient(
+    90deg,
+    rgba(152, 182, 250, 1) 1%,
+    rgba(79, 224, 195, 1) 50%,
+    rgba(240, 190, 134, 1) 78%,
+    rgba(255, 230, 247, 1) 100%
+  );
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  /* overflow: hidden; */
+}
+body::-webkit-scrollbar {
+  display: none;
 }
