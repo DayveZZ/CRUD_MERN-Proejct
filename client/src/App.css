@@ -7,10 +7,13 @@
   @apply outline-none border-b w-full mr-4 py-2;
 }
 .workoutForm .btn {
-  @apply mt-4;
+  @apply mt-8;
 }
 .btn {
-  @apply cursor-pointer uppercase hover:bg-black/40 p-4 rounded-lg w-12 h-12 flex items-center justify-center text-xl;
+  @apply cursor-pointer uppercase p-2 rounded-lg flex items-center justify-center;
+}
+.btn svg {
+  @apply text-white w-6 h-6;
 }
 body {
   @apply text-black/80 bg-gradient-to-br from-gray-100 via-gray-200 to-gray-300 text-gray-800;
