@@ -19,7 +19,7 @@ const userSchema = mongose.Schema({
 });
 
 // Sign up the model
-userSchema.static.signip = async (username, email, password) => {
+userSchema.statics.signup = async (username, email, password) => {
   const existsUsername = await User.findOne({ username });
   const existsEmail = await User.findOne({ email });
   if (existsUsername) {
