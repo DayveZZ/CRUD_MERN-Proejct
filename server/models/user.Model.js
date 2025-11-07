@@ -36,18 +36,31 @@ userSchema.statics.signup = async (username, email, password) => {
 
 // Login the model
 userSchema.statics.login = async function (username, email, password) {
-  const user = await this.findOne({ username, email }).select("+password");
+  if (!password) throw new Error("Password is required");
+
+  // Build OR conditions dynamically
+  const orConditions = [];
+  if (username) orConditions.push({ username });
+  if (email) orConditions.push({ email });
+
+  if (orConditions.length === 0) {
+    throw new Error("Provide either username or email");
+  }
+
+  // Find user by username OR email
+  const user = await this.findOne({ $or: orConditions }).select("+password");
 
   if (!user) {
-    throw new Error("Username or Email incorrect !!!");
+    throw new Error("Invalid username or email");
   }
 
   // Compare password
-  const matchPassword = await bcrypt.compare(password, user.password);
-  if (!matchPassword) {
-    throw new Error("Wrong Password");
+  const match = await bcrypt.compare(password, user.password);
+  if (!match) {
+    throw new Error("Wrong password");
   }
 
+  user.password = undefined; // optional: hide hash
   return user;
 };
 
