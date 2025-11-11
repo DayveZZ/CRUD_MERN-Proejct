@@ -1,12 +1,10 @@
 import jwt from "jsonwebtoken";
-import dotenv from "dotenv";
 
-dotenv.config();
-const JWT_SECRET = process.env.JWT_SECRET;
+const { JWT_SECRET } = process.env;
+if (!JWT_SECRET) {
+  throw new Error("JWT_SECRET is missing. Add it to your .env");
+}
 
-const generateToken = (user) => {
-  return jwt.sign({ id: user._id, email: user.email }, JWT_SECRET, {
-    expiresIn: "1d",
-  });
+export const generateToken = (id, email) => {
+  return jwt.sign({ id, email }, JWT_SECRET, { expiresIn: "1d" });
 };
-export { generateToken };

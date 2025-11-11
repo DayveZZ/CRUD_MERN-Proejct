@@ -1,7 +1,7 @@
-import mongose from "mongoose";
+import mongoose from "mongoose";
 import bcrypt from "bcrypt";
 
-const userSchema = mongose.Schema({
+const userSchema = new mongoose.Schema({
   username: {
     type: String,
     required: true,
@@ -34,6 +34,23 @@ userSchema.statics.signup = async (username, email, password) => {
   return user;
 };
 
-const User = mongose.model("User", userSchema);
+// Login the model
+userSchema.statics.login = async function (username, email, password) {
+  const user = await this.findOne({ username, email }).select("+password");
+
+  if (!user) {
+    throw new Error("Username or Email incorrect !!!");
+  }
+
+  // Compare password
+  const matchPassword = await bcrypt.compare(password, user.password);
+  if (!matchPassword) {
+    throw new Error("Wrong Password");
+  }
+
+  return user;
+};
+
+const User = mongoose.model("User", userSchema);
 
 export default User;
